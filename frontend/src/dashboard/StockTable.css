@@ -1,0 +1,11 @@
+.positive-change {
+  color: lightgreen;
+}
+
+.negative-change {
+  color: lightcoral;
+}
+
+.card {
+  background-color: #3d3d3d;
+}

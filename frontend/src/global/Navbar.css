@@ -1,0 +1,40 @@
+* {
+  /* font-size: 16px; */
+  margin: 0;
+  padding: 0;
+  font-family: "Oswald";
+}
+.nav-item {
+  font-size: 22px;
+  padding: 0 10px;
+}
+.navbar-brand {
+  letter-spacing: 1.4px;
+}
+
+.navbar-link-item {
+  font-size: 16px;
+}
+.navbar-link-item::after {
+  content: "";
+  left: 0px;
+  width: 0%;
+  display: block;
+  height: 1px;
+  transition: 0.3s ease-in-out;
+  transition-property: all;
+  bottom: 50px;
+  background-color: #e8ecf1;
+}
+
+a.navbar-brand span {
+  font-size: 20px;
+  color: chartreuse;
+}
+.navbar-link-item.active::after {
+  width: 100%;
+}
+
+.navbar-link-item:hover::after {
+  width: 100%;
+}
