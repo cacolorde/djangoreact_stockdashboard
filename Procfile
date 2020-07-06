@@ -1,0 +1,1 @@
+web: StockApp.wsgi --log-file -

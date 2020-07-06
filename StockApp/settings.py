@@ -26,12 +26,12 @@ SECRET_KEY = '$a-=mf+$*e9vm=2dt$r7xuc-rhj16xb$*nb5xp%=764+_jnj@g'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    # 'localhost:8000',
+    'localhost:8000',
     # 'cacolorde.pythonanywhere.com',
     # 'localhost:8000',
-    # 'localhost:3000',
+    'localhost:3000',
     # '192.168.100.10',
-    '*'
+    'rminvestimentos.herokuapp.com'
 ]
 
 
