@@ -28,4 +28,5 @@ urlpatterns = [
     path('query/', TemplateView.as_view(template_name="index.html")),
     path('forex/', TemplateView.as_view(template_name="index.html")),
     path('bvsp/', TemplateView.as_view(template_name="index.html")),
+    path('', include('pwa.urls')),
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

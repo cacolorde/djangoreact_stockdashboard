@@ -26,7 +26,7 @@ SECRET_KEY = '$a-=mf+$*e9vm=2dt$r7xuc-rhj16xb$*nb5xp%=764+_jnj@g'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost:8000',
+    'localhost',
     # 'cacolorde.pythonanywhere.com',
     # 'localhost:8000',
     'localhost:3000',
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'corsheaders',
+    'pwa',
 ]
 
 MIDDLEWARE = [
@@ -140,7 +141,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:8000',
     'http://localhost:3000',
     'http://192.168.100.10:8000',
-    'rminvestimentos.herokuapp.com',
+    'https://rminvestimentos.herokuapp.com',
     'https://rminvestimentos.herokuapp.com',
 ]
 CORS_ORIGIN_ALLOW_ALL = True
@@ -155,3 +156,29 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/build/static'),	
 ] 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# pwa app
+PWA_APP_NAME = 'RM INVESTIMENTOS'
+PWA_APP_DESCRIPTION = "Ricardo Martins Investimentos em Renda Variável"
+PWA_APP_THEME_COLOR = '#000000'
+PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_ICONS = [
+    {
+        'src': '/static/images/logo.png',
+        'sizes': '160x160'
+    }
+]
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': '/static/images/logo.png',
+        'sizes': '160x160'
+    }
+]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        'src': '/static/images/logo.png',
+        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+    }
+]
+PWA_APP_LANG = 'pt-BR'
