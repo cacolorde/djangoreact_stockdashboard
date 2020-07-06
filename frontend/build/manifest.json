@@ -3,7 +3,7 @@
   "name": "Ricardo Martins Investimentos em Renda Variável",
   "icons": [
     {
-      "src": "/logo.png",
+      "src": "./logo.png",
       "type": "image/png",
       "sizes": "512x512"
     }
