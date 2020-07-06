@@ -15,7 +15,6 @@ import yfinance as yf
 import pandas as pd
 import pandas_datareader.data as web
 from datetime import datetime, date, timedelta
-import talib
 import json
 
 # stock query ✅
