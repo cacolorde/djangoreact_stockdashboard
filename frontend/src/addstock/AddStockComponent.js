@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Col, Card, Container, Row, Form, Button } from "react-bootstrap/";
 import axios from "axios";
 import { MDBInput } from "mdbreact";
+import { baseURL } from "../global/URL";
 
 const AddStockComponent = () => {
   const [symbol, setSymbol] = useState("");
@@ -11,7 +12,7 @@ const AddStockComponent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8000/api/stock/", {
+      .post(`${baseURL}/api/stock/`, {
         symbol: symbol.toUpperCase(),
         is_etf: isETF,
         is_fund: isFund,

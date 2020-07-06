@@ -16,6 +16,7 @@ import TransactionsTable from "./TransactionsTable";
 import WalletAllocationChart from "./WalletAllocationChart";
 import WalletYield from "./WalletYield";
 import axios from "axios";
+import { baseURL } from "../global/URL";
 // import { MDBBtn } from "mdbreact";
 
 class WalletComponent extends React.Component {
@@ -61,7 +62,7 @@ class WalletComponent extends React.Component {
       Loading: true,
     });
     axios
-      .get("http://localhost:8000/api/wallet/", {
+      .get(`${baseURL}/api/wallet/`, {
         params: {
           owner: e.target.value,
         },
@@ -132,7 +133,7 @@ class WalletComponent extends React.Component {
       Loading: true,
     });
     axios
-      .get("http://localhost:8000/api/wallet/", {
+      .get(`${baseURL}/api/wallet/`, {
         params: {
           owner: this.state.Owner,
         },
@@ -201,7 +202,7 @@ class WalletComponent extends React.Component {
     e.preventDefault();
     // console.log(Stock, Amount, Investment, Broker, props.owner);
     axios
-      .post("http://localhost:8000/api/wallet/", {
+      .post(`${baseURL}/api/wallet/`, {
         stock_amount: this.state.stockAmount,
         symbol: this.state.stock,
         investment: this.state.investment,
@@ -226,7 +227,7 @@ class WalletComponent extends React.Component {
   componentDidUpdate() {
     if (this.state.updateRun) {
       axios
-        .get(`http://localhost:8000/api/wallet/stocks/${this.state.Owner}`)
+        .get(`${baseURL}/api/wallet/stocks/${this.state.Owner}`)
         .then((resp) => resp.data)
         .then((data) => {
           this.setState({

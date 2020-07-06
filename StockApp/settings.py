@@ -27,8 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     # 'localhost:8000',
-    # # 'cacobm.pythonanywhere.com'
-    # '192.168.100.10'
+    # 'cacolorde.pythonanywhere.com',
+    # 'localhost:8000',
+    # 'localhost:3000',
+    # '192.168.100.10',
     '*'
 ]
 
@@ -130,7 +132,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/build/static'),	
 ] 
-# STATIC_ROOT = '/home/cacobm/stock_dashboard/collected_static/static'
+STATIC_ROOT = '/home/cacolorde/djangoreact_stockdashboard/collected_static/static'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [

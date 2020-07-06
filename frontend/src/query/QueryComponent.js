@@ -12,6 +12,7 @@ import {
 import { MDBInput } from "mdbreact";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
+import { baseURL } from "../global/URL";
 
 class QueryComponent extends React.Component {
   constructor(props) {
@@ -140,7 +141,7 @@ class QueryComponent extends React.Component {
     let sell = 0;
     let neutral = 0;
     axios
-      .get(`http://localhost:8000/api/query/`, {
+      .get(`${baseURL}/api/query/`, {
         params: {
           symbol: this.state.symbol,
         },

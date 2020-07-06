@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./StockTable.css";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
+import { baseURL } from "../global/URL";
 
 // Função que atualiza as informações do ativo dado um ID
 
@@ -33,7 +34,7 @@ class FavoriteCard extends Component {
       e.target.firstChild.data = "Desfavoritar";
     }
     axios
-      .put("http://localhost:8000/api/stock/", {
+      .put(`${baseURL}/api/stock/`, {
         pk: parseInt(e.target.getAttribute("stockid")),
       })
       .then((resp) => {
@@ -43,7 +44,7 @@ class FavoriteCard extends Component {
 
   deleteHandler(e) {
     axios
-      .delete("http://localhost:8000/api/stock/", {
+      .delete(`${baseURL}/api/stock/`, {
         pk: e.target.getAttribute("id"),
         hello: "hahah",
         asdhasi: "asoidhasu",
@@ -59,7 +60,7 @@ class FavoriteCard extends Component {
       isLoading: true,
     });
     axios
-      .get("http://localhost:8000/api/stock/")
+      .get(`${baseURL}/api/stock/`)
       .then((resp) => resp.data)
       .then((data) => {
         var itemsProcessed = 0;
@@ -76,7 +77,7 @@ class FavoriteCard extends Component {
         }
         stocksId.forEach((id, index, array) => {
           axios
-            .get(`http://localhost:8000/api/stock/update/${id}`)
+            .get(`${baseURL}/api/stock/update/${id}`)
             .then((resp) => resp.data.updated_stock)
             .then((stock) => {
               itemsProcessed++;

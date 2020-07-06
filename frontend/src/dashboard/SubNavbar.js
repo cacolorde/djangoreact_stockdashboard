@@ -4,6 +4,7 @@ import axios from "axios";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { baseURL } from "../global/URL";
 
 class SubNavbar extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class SubNavbar extends Component {
     var data = [];
     this.state.indexes.forEach((item, index, array) => {
       axios
-        .get("http://localhost:8000/api/index/get/", {
+        .get(`${baseURL}/api/index/get/`, {
           params: { name: item.name, country: item.country },
         })
         .then((resp) => {
@@ -65,7 +66,7 @@ class SubNavbar extends Component {
     });
     this.state.forexes.forEach((item, index, array) => {
       axios
-        .get("http://localhost:8000/api/forex/get/", {
+        .get(`${baseURL}/api/forex/get/`, {
           params: { name: item.name },
         })
         .then((resp) => {

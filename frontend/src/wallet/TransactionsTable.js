@@ -13,6 +13,7 @@ import {
 } from "mdbreact";
 import { Form, Table } from "react-bootstrap";
 import axios from "axios";
+import { baseURL } from "../global/URL";
 
 class TransactionsTable extends React.Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class TransactionsTable extends React.Component {
       return 0;
     }
     axios
-      .delete("http://localhost:8000/api/transaction/", {
+      .delete(`${baseURL}/api/transaction/`, {
         params: {
           pk: id,
         },
@@ -56,7 +57,7 @@ class TransactionsTable extends React.Component {
     uploadData.append("owner", this.props.owner);
 
     axios
-      .post("http://localhost:8000/api/transaction/", uploadData)
+      .post(`${baseURL}/api/transaction/`, uploadData)
       .then((resp) => resp.data)
       .then((data) => {
         console.log(data);
@@ -67,7 +68,7 @@ class TransactionsTable extends React.Component {
   };
   componentDidMount() {
     axios
-      .get("http://localhost:8000/api/transaction/", {
+      .get(`${baseURL}/api/transaction/`, {
         params: {
           owner: this.props.owner,
         },

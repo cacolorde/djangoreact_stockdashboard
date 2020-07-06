@@ -12,6 +12,7 @@ import {
   MDBInput,
 } from "mdbreact";
 import axios from "axios";
+import { baseURL } from "../global/URL";
 
 const WalletTable = (props) => {
   const [ModalEdit, setModalEdit] = React.useState(false);
@@ -63,7 +64,7 @@ const WalletTable = (props) => {
       `Deseja mesmo excluir o item ${object.stock.name} (${object.stock.symbol}) da sua carteira?`
     )
       ? axios
-          .delete("http://localhost:8000/api/wallet/", {
+          .delete(`${baseURL}/api/wallet/`, {
             params: {
               pk: e.target.getAttribute("id"),
             },
@@ -82,7 +83,7 @@ const WalletTable = (props) => {
   const editWalletItem = (e) => {
     e.preventDefault();
     axios
-      .put("http://localhost:8000/api/wallet/", {
+      .put(`${baseURL}/api/wallet/`, {
         pk: EditId,
         stock_amount: Amount,
         investment: Investment,
@@ -98,7 +99,7 @@ const WalletTable = (props) => {
     e.preventDefault();
     // console.log(Stock, Amount, Investment, Broker, props.owner);
     axios
-      .post("http://localhost:8000/api/wallet/", {
+      .post(`${baseURL}/api/wallet/`, {
         stock_amount: Amount,
         symbol: Stock,
         investment: Investment,

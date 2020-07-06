@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col, Table, Card, Container } from "react-bootstrap";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";
+import { baseURL } from "../global/URL";
 
 class IbovespaComponent extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class IbovespaComponent extends React.Component {
     let closePrices = [];
     // let name;
     axios
-      .get(`http://localhost:8000/api/index/historical/`, {
+      .get(`${baseURL}/api/index/historical/`, {
         params: {
           name: "Bovespa",
         },

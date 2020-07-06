@@ -2,6 +2,7 @@ import React from "react";
 import { Table, Row, Col, Card, Container, Spinner } from "react-bootstrap";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";
+import { baseURL } from "../global/URL";
 
 class StockDetailComponent extends React.Component {
   constructor(props) {
@@ -115,7 +116,7 @@ class StockDetailComponent extends React.Component {
     let sell = 0;
     let neutral = 0;
     axios
-      .get(`http://localhost:8000/api/stock/get/${this.props.match.params.id}`)
+      .get(`${baseURL}/api/stock/get/${this.props.match.params.id}`)
       .then((resp) => resp.data)
       .then((data) => {
         name = data.name;

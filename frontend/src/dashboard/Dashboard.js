@@ -5,12 +5,7 @@ import SubNavbar from "./SubNavbar";
 import DashboardChart from "./DashboardChart";
 
 // Grid Layout
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-
-// Card Layout
-import Card from "react-bootstrap/Card";
+import { Container, Row, Col, Card } from "react-bootstrap/";
 
 class DashboardComponent extends Component {
   render() {

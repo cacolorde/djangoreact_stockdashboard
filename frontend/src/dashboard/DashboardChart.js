@@ -1,6 +1,7 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";
+import { baseURL } from "../global/URL";
 
 class DashboardChart extends React.Component {
   constructor(props) {
@@ -67,7 +68,7 @@ class DashboardChart extends React.Component {
   }
   componentDidMount() {
     axios
-      .get("http://localhost:8000/api/stock/")
+      .get(`${baseURL}/api/stock/`)
       .then((resp) => resp.data)
       .then((data) => {
         let ser = [];

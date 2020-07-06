@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./StockTable.css";
 import axios from "axios";
 import ProgressBarComponent from "./ProgressBarComponent";
+import { baseURL } from "../global/URL";
 
 // Função que atualiza as informações do ativo dado um ID
 
@@ -32,7 +33,7 @@ class StockTable extends Component {
       e.target.firstChild.data = "Desfavoritar";
     }
     axios
-      .put("http://localhost:8000/api/stock/", {
+      .put(`${baseURL}/api/stock/`, {
         pk: parseInt(e.target.getAttribute("stockid")),
       })
       .then((resp) => {
@@ -45,7 +46,7 @@ class StockTable extends Component {
       isLoading: true,
     });
     axios
-      .get("http://localhost:8000/api/stock")
+      .get(`${baseURL}/api/stock/`)
       .then((resp) => resp.data)
       .then((data) => {
         var itemsProcessed = 0;
@@ -70,7 +71,7 @@ class StockTable extends Component {
         stocksId.forEach((id, index, array) => {
           // console.log(id);
           axios
-            .get(`http://localhost:8000/api/stock/update/${id}`)
+            .get(`${baseURL}/api/stock/update/${id}`)
             .then((resp) => resp.data.updated_stock)
             .then((stock) => {
               // console.log(stock);
