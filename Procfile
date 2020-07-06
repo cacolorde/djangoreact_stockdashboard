@@ -1,1 +1,1 @@
-web: StockApp.wsgi --log-file -
+web: gunicorn StockApp.wsgi --log-file -
