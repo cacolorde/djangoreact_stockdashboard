@@ -175,7 +175,7 @@ class TransactionsTable extends React.Component {
                         style={{ fontSize: "20px" }}
                         type="text"
                         onChange={(e) =>
-                          this.setState({ Stock: e.target.value })
+                          this.setState({ Stock: e.target.value.toUpperCase() })
                         }
                       />
                       <div className="md-form">

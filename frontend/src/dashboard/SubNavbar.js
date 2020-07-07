@@ -47,7 +47,8 @@ class SubNavbar extends Component {
   componentDidMount() {
     var itemsProcessed = 0;
     var itemsProcessed2 = 0;
-    var data = [];
+    var data1 = [];
+    var data2 = [];
     this.state.indexes.forEach((item, index, array) => {
       axios
         .get(`${baseURL}/api/index/get/`, {
@@ -56,11 +57,11 @@ class SubNavbar extends Component {
         .then((resp) => {
           itemsProcessed = itemsProcessed + 1;
           // console.log(resp.data.object);
-          data.push(resp.data.object);
+          data1.push(resp.data.object);
         })
         .then(() => {
           if (itemsProcessed === array.length) {
-            this.setState({ data: data });
+            this.setState({ data: data1 });
           }
         });
     });
@@ -72,11 +73,11 @@ class SubNavbar extends Component {
         .then((resp) => {
           itemsProcessed2 = itemsProcessed2 + 1;
           // console.log(resp.data.object);
-          data.push(resp.data.object);
+          data2.push(resp.data.object);
         })
         .then(() => {
           if (itemsProcessed2 === array.length) {
-            this.setState({ data2: data });
+            this.setState({ data2: data2 });
           }
         });
     });
@@ -113,32 +114,32 @@ class SubNavbar extends Component {
 
     return (
       <Slider {...settings}>
-        {/* {this.state.data.map((object, index) => {
+        {this.state.data.map((object, index) => {
           let colorClass = object.change_percent > 0 ? "success" : "danger";
           return (
             <Col key={`${index}`}>
               <Card
-                bg="dark"
-                text="light"
+                bg="light"
+                text="dark"
                 className="z-depth-4 default-color mb-2"
               >
                 <Card.Body>
                   <div className="d-flex justify-content-around">
-                    <h3 className="float-left">{object.name}</h3>
+                    <h5 className="float-left">{object.name}</h5>
                     <div className="d-flex justify-content-end">
-                      <h3>
+                      <h5>
                         {object.price}
                         <Badge pill variant={colorClass} className="ml-2">
                           {object.change_percent}%
                         </Badge>
-                      </h3>
+                      </h5>
                     </div>
                   </div>
                 </Card.Body>
               </Card>
             </Col>
           );
-        })} */}
+        })}
         {this.state.data2.map((object, index) => {
           let colorClass = object.change_percent > 0 ? "success" : "danger";
           return (
@@ -153,7 +154,7 @@ class SubNavbar extends Component {
                     <h5 className="float-left">{object.name}</h5>
                     <div className="d-flex justify-content-end">
                       <h5>
-                        R$ {object.price}
+                        R$ {object.price.toFixed(3)}
                         <Badge pill variant={colorClass} className="ml-2">
                           {object.change_percent}%
                         </Badge>

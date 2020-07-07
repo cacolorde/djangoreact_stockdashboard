@@ -160,7 +160,7 @@ class Stocks_dbQuery(APIView):#✅
     return Response({stock.symbol: stock.favorite}, status=202)
   
   def delete(self, request):
-    stock_id = request.data.get('id')
+    stock_id = request.GET.get('pk')
     stock = Stock.objects.get(pk=stock_id)
     stock.delete()
 
@@ -210,10 +210,10 @@ class Wallet_dbQuery(APIView): #✅
     
     
     # validation
-    if owner not in ['Ricardo', 'Itala', 'Thayssa']:
+    if owner not in ['Ricardo', 'Itala', 'Thayssa', 'Caco']:
       return Response({'error':'Owner not recognized'})
     
-    if broker not in ['Ágora - Bradesco', 'Banco do Brasil']:
+    if broker not in ['Ágora - Bradesco', 'Banco do Brasil', 'Itaú']:
       return Response({'error':'Broker not recognized'})
     
     validated_data = {

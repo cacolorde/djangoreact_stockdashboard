@@ -20,6 +20,26 @@ class StockTable extends Component {
       stocksId: [],
     };
     this.favoriteHandler = this.favoriteHandler.bind(this);
+    this.deleteHandler = this.deleteHandler.bind(this);
+  }
+
+  deleteHandler(e) {
+    axios
+      .delete(`${baseURL}/api/stock/`, {
+        params: {
+          pk: e.target.getAttribute("stockid"),
+        },
+      })
+      .then((resp) => {
+        resp.status === 201
+          ? alert("Ativo deletado com sucesso")
+          : alert("Ops, houve algum erro");
+
+        return resp.status;
+      })
+      .then((status) => {
+        document.location.reload(status === 201);
+      });
   }
 
   favoriteHandler(e) {
@@ -104,7 +124,8 @@ class StockTable extends Component {
             <th style={{ width: "20%" }}>Preço</th>
             <th style={{ width: "20%" }}>Variação(%)</th>
             <th style={{ width: "20%" }}>Variação(R$)</th>
-            <th style={{ width: "15%" }}></th>
+            <th style={{ width: "10%" }}></th>
+            <th style={{ width: "5%" }}></th>
             <th style={{ width: "5%" }}></th>
           </tr>
         </thead>
@@ -162,6 +183,20 @@ class StockTable extends Component {
                     variant={stock.favorite ? "outline-info" : "info"}
                   >
                     {stock.favorite ? "Desfavoritar" : "Favoritar"}
+                  </Button>
+                </td>
+                <td stockid={stock.pk.toString()} style={{ fontSize: "18px" }}>
+                  <Button
+                    className="float-left"
+                    onClick={this.deleteHandler}
+                    size="sm"
+                    stockid={stock.pk.toString()}
+                    variant="outline-danger"
+                  >
+                    <i
+                      stockid={stock.pk.toString()}
+                      className="fas fa-times"
+                    ></i>
                   </Button>
                 </td>
               </tr>

@@ -41,7 +41,7 @@ class Wallet(models.Model):
         return self.stock.symbol
 
     class Meta:
-        unique_together = ['owner', 'stock']
+        unique_together = ['owner', 'stock', 'broker']
 
 
 class Transaction(models.Model):

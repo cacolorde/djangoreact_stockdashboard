@@ -45,16 +45,22 @@ class FavoriteCard extends Component {
   deleteHandler(e) {
     axios
       .delete(`${baseURL}/api/stock/`, {
-        pk: e.target.getAttribute("id"),
-        hello: "hahah",
-        asdhasi: "asoidhasu",
+        params: {
+          pk: e.target.getAttribute("id"),
+        },
       })
       .then((resp) => {
         resp.status === 201
           ? alert("Ativo deletado com sucesso")
           : alert("Ops, houve algum erro");
+
+        return resp.status;
+      })
+      .then((status) => {
+        document.location.reload(status === 201);
       });
   }
+
   componentDidMount() {
     this.setState({
       isLoading: true,

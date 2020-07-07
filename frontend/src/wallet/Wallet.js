@@ -382,6 +382,7 @@ class WalletComponent extends React.Component {
                       </option>
                       <option value="Ricardo">Ricardo</option>
                       <option value="Itala">Itala</option>
+                      <option value="Caco">Caco</option>
                       <option value="Thayssa">Thayssa</option>
                     </Form.Control>
                   </Form.Group>
