@@ -108,7 +108,7 @@ class TransactionsTable extends React.Component {
               </td>
               <td className="text-center align-middle">{item.stock}</td>
               <td className="text-center align-middle">
-                <a href={`http://localhost:8000${item.document}`} download>
+                <a href={`${baseURL}${item.document}`} download>
                   <i className="text-center align-middle fas fa-file-download fa-2x"></i>
                 </a>
               </td>

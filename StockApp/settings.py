@@ -27,11 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    # 'cacolorde.pythonanywhere.com',
+    'cacolorde.pythonanywhere.com',
     # 'localhost:8000',
     'localhost:3000',
     # '192.168.100.10',
-    'rminvestimentos.herokuapp.com'
 ]
 
 
@@ -141,8 +140,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:8000',
     'http://localhost:3000',
     'http://192.168.100.10:8000',
-    'https://rminvestimentos.herokuapp.com',
-    'https://rminvestimentos.herokuapp.com',
+    'cacolorde.pythonanywhere.com',
 ]
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -165,19 +163,19 @@ PWA_APP_BACKGROUND_COLOR = '#ffffff'
 PWA_APP_DISPLAY = 'standalone'
 PWA_APP_ICONS = [
     {
-        'src': '/static/appstore.png',
+        'src': '/appstore.png',
         'sizes': '160x160'
     }
 ]
 PWA_APP_ICONS_APPLE = [
     {
-        'src': '/static/appstore.png',
+        'src': '/appstore.png',
         'sizes': '160x160'
     }
 ]
 PWA_APP_SPLASH_SCREEN = [
     {
-        'src': '/static/appstore.png',
+        'src': '/appstore.png',
         'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
     }
 ]

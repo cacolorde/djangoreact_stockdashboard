@@ -361,7 +361,7 @@ class QueryComponent extends React.Component {
     );
     const variant = "dark";
     return (
-      <Container>
+      <Container fluid>
         <Row className="justify-content-center mt-3">
           <Card
             bg={variant.toLowerCase()}
