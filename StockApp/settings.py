@@ -23,11 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$a-=mf+$*e9vm=2dt$r7xuc-rhj16xb$*nb5xp%=764+_jnj@g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
-    'cacolorde.pythonanywhere.com',
+    'rminvestimentos.herokuapp.com'
     # 'localhost:8000',
     'localhost:3000',
     # '192.168.100.10',
@@ -142,8 +142,7 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:8000',
     'http://localhost:3000',
-    'http://192.168.100.10:8000',
-    'cacolorde.pythonanywhere.com',
+    'https://rminvestimentos.herokuapp.com'
 ]
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -183,3 +182,8 @@ PWA_APP_SPLASH_SCREEN = [
     }
 ]
 PWA_APP_LANG = 'pt-BR'
+
+# redirect http -> https
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
