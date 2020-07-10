@@ -111,8 +111,10 @@ class Stocks_Historical(APIView): #✅
   def get(self, request, pk=None):
     stock = Stock.objects.get(pk=pk)
     obj = get_historical_data(stock.symbol)
-    
-    indicators = get_indicators(stock.symbol)
+    try:
+      indicators = get_indicators(stock.symbol)
+    except:
+      indicators = []
 
     context = {
       'name': stock.name,
@@ -389,10 +391,16 @@ def get_name(symbol :str):
 
 
 def get_indicators(symbol :str):
+  try:
+    pp = investpy.technical.pivot_points(name=symbol, country='brazil', product_type='stock', interval='daily')
+    ma = investpy.technical.moving_averages(name=symbol, country='brazil', product_type='stock', interval='daily')
+    tf = investpy.technical.technical_indicators(name=symbol, country='brazil', product_type='stock', interval='daily')
+  except:
+    name = investpy.etfs.search_etfs(by='symbol', value=symbol).name[0]
+    pp = investpy.technical.pivot_points(name=name, country='brazil', product_type='stock', interval='daily')
+    ma = investpy.technical.moving_averages(name=name, country='brazil', product_type='stock', interval='daily')
+    tf = investpy.technical.technical_indicators(name=name, country='brazil', product_type='stock', interval='daily')
 
-  pp = investpy.technical.pivot_points(name=symbol, country='brazil', product_type='stock', interval='daily')
-  ma = investpy.technical.moving_averages(name=symbol, country='brazil', product_type='stock', interval='daily')
-  tf = investpy.technical.technical_indicators(name=symbol, country='brazil', product_type='stock', interval='daily')
   resistances = [pp.r1[0], pp.r2[0], pp.r3[0]]
   supports = [pp.s1[0], pp.s2[0], pp.s3[0]]
   ema = ma.ema_value[1]
@@ -466,15 +474,20 @@ def get_historical_data(symbol :str):
     yesterday = (datetime.today() - timedelta(days=200)).strftime("%d/%m/%Y")
     df_json = investpy.get_stock_historical_data(stock=symbol, country='brazil', from_date=yesterday, to_date=today, as_json=True, order='descending', interval='Daily')
   except:
-    df = yf.Ticker(symbol.upper() + '.SA').history(period='6mo')
-    df = df.rename(columns=str.lower)
-    df = df.rename_axis('date', axis='rows')
-    df = df.iloc[::-1]
-    df.index = df.index.strftime('%d/%m/%Y')
-    df_json = json.loads(df.to_json(orient='table'))
-    df_json.pop('schema')
-    df_json['historical'] = df_json.pop('data')
-    df_json = json.dumps(df_json)
+    try:
+      name = investpy.etfs.search_etfs(by='symbol', value=symbol).name[0]
+      df_json = investpy.etfs.get_etf_historical_data(etf=name, country='brazil', from_date=yesterday, to_date=today, as_json=True, order='descending', interval='Daily')
+
+    except:
+      df = yf.Ticker(symbol.upper() + '.SA').history(period='6mo')
+      df = df.rename(columns=str.lower)
+      df = df.rename_axis('date', axis='rows')
+      df = df.iloc[::-1]
+      df.index = df.index.strftime('%d/%m/%Y')
+      df_json = json.loads(df.to_json(orient='table'))
+      df_json.pop('schema')
+      df_json['historical'] = df_json.pop('data')
+      df_json = json.dumps(df_json)
     
   return df_json
 
