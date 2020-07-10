@@ -121,23 +121,27 @@ class StockDetailComponent extends React.Component {
       .then((data) => {
         name = data.name;
         indicators = data.indicator;
-        indicators.momentum.forEach((item) => {
-          if (item.indicator !== "Highs/Lows(14)") {
-            if (item.signal === "buy") {
-              buy = buy + 1;
-            } else if (item.signal === "sell") {
-              sell = sell + 1;
-            } else {
-              neutral = neutral + 1;
+        if (indicators !== []) {
+          indicators.momentum.forEach((item) => {
+            if (item.indicator !== "Highs/Lows(14)") {
+              if (item.signal === "buy") {
+                buy = buy + 1;
+              } else if (item.signal === "sell") {
+                sell = sell + 1;
+              } else {
+                neutral = neutral + 1;
+              }
             }
+          });
+          if (indicators.ema_signal === "buy") {
+            buy = buy + 1;
+          } else if (indicators.ema_signal === "sell") {
+            sell = sell + 1;
+          } else {
+            neutral = neutral + 1;
           }
-        });
-        if (indicators.ema_signal === "buy") {
-          buy = buy + 1;
-        } else if (indicators.ema_signal === "sell") {
-          sell = sell + 1;
         } else {
-          neutral = neutral + 1;
+          indicators = [];
         }
         console.log(data);
         data.data.historical.forEach((item, index, array) => {
@@ -226,22 +230,30 @@ class StockDetailComponent extends React.Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.Indicators.resistances.map((value, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>Resistencia {index + 1}</td>
-                        <td>R$ {value}</td>
-                      </tr>
-                    );
-                  })}
-                  {this.state.Indicators.supports.map((value, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>Suportes {index + 1}</td>
-                        <td>R$ {value}</td>
-                      </tr>
-                    );
-                  })}
+                  {this.state.Indicators === [] ? (
+                    <tr> Sem dados de indicadores </tr>
+                  ) : (
+                    this.state.Indicators.resistances.map((value, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>Resistencia {index + 1}</td>
+                          <td>R$ {value}</td>
+                        </tr>
+                      );
+                    })
+                  )}
+                  {this.state.Indicators === [] ? (
+                    <tr> Sem dados de indicadores </tr>
+                  ) : (
+                    this.state.Indicators.supports.map((value, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>Suportes {index + 1}</td>
+                          <td>R$ {value}</td>
+                        </tr>
+                      );
+                    })
+                  )}
                 </tbody>
               </Table>
             </Col>
