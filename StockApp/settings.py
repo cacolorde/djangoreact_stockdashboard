@@ -27,7 +27,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
-    'rminvestimentos.herokuapp.com'
+    'rminvestimentos.herokuapp.com',
     # 'localhost:8000',
     'localhost:3000',
     # '192.168.100.10',
