@@ -168,11 +168,23 @@ PWA_APP_ICONS = [
         'src': '/static/logo.png',
         'sizes': '192x192'
     },
+    {
+        'src': '/static/icon-1024.png',
+        'sizes': '1024x1024'
+    },
+    {
+        'src': '/static/favicon-16x16.png',
+        'sizes': '16x16'
+    },
+    {
+        'src': '/static/favicon-32x32.png',
+        'sizes': '32x32'
+    },
 ]
 PWA_APP_ICONS_APPLE = [
     {
-        'src': '/static/logo.png',
-        'sizes': '192x192'
+        'src': '/static/apple-touch-icon.png',
+        # 'sizes': '192x192'
     }
 ]
 PWA_APP_SPLASH_SCREEN = [
