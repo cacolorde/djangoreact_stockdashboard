@@ -165,20 +165,20 @@ PWA_APP_BACKGROUND_COLOR = '#ffffff'
 PWA_APP_DISPLAY = 'standalone'
 PWA_APP_ICONS = [
     {
-        'src': '/static/appstore.png',
-        'sizes': '160x160'
+        'src': '/static/logo.png',
+        'sizes': '192x192'
     }
 ]
 PWA_APP_ICONS_APPLE = [
     {
-        'src': '/static/appstore.png',
-        'sizes': '160x160'
+        'src': '/static/logo.png',
+        'sizes': '192x192'
     }
 ]
 PWA_APP_SPLASH_SCREEN = [
     {
-        'src': '/static/appstore.png',
-        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+        'src': '/static/splash.png',
+        'media': '(device-width: 320px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 2)'
     }
 ]
 PWA_APP_LANG = 'pt-BR'
