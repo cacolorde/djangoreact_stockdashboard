@@ -167,7 +167,7 @@ PWA_APP_ICONS = [
     {
         'src': '/static/logo.png',
         'sizes': '192x192'
-    }
+    },
 ]
 PWA_APP_ICONS_APPLE = [
     {
@@ -178,6 +178,7 @@ PWA_APP_ICONS_APPLE = [
 PWA_APP_SPLASH_SCREEN = [
     {
         'src': '/static/splash.png',
+        'size': '1024x1024',
         'media': '(device-width: 320px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 2)'
     }
 ]
