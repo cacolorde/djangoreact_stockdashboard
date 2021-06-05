@@ -23,15 +23,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$a-=mf+$*e9vm=2dt$r7xuc-rhj16xb$*nb5xp%=764+_jnj@g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = [
-    'localhost',
-    'rminvestimentos.herokuapp.com',
-    # 'localhost:8000',
-    'localhost:3000',
-    # '192.168.100.10',
-]
+DEBUG = True
+if not DEBUG:
+    ALLOWED_HOSTS = [
+        'localhost',
+        'rminvestimentos.herokuapp.com',
+        # 'localhost:8000',
+        'localhost:3000',
+        # '192.168.100.10',
+    ]
+else:
+    ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -197,6 +199,11 @@ PWA_APP_SPLASH_SCREEN = [
 PWA_APP_LANG = 'pt-BR'
 
 # redirect http -> https
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+else:
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
